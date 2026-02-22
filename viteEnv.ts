@@ -1,15 +1,33 @@
-export type TargetBrowser = "chrome" | "firefox";
+export type TargetBrowser = "chrome" | "firefox" | "safari";
 
-export const browser: TargetBrowser =
-  process.env.BROWSER === "firefox" ? "firefox" : "chrome";
+const rawBrowser = process.env.BROWSER;
+
+const getBrowser = (): TargetBrowser => {
+  if (rawBrowser === "firefox") {
+    return "firefox";
+  }
+  if (rawBrowser === "safari") {
+    return "safari";
+  }
+  return "chrome";
+};
+
+export const browser: TargetBrowser = getBrowser();
 
 export const isFirefox = browser === "firefox";
 export const isChrome = browser === "chrome";
+export const isSafari = browser === "safari";
 
-export function getOutDir() {
+export const getOutDir = () => {
   return `dist/${browser}`;
-}
+};
 
-export function getManifestSrc() {
-  return isFirefox ? "manifest/firefox.json" : "manifest/chrome.json";
-}
+export const getManifestSrc = () => {
+  if (isFirefox) {
+    return "manifest/firefox.json";
+  }
+  if (isSafari) {
+    return "manifest/safari.json";
+  }
+  return "manifest/chrome.json";
+};

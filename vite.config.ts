@@ -4,8 +4,6 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 import { fileURLToPath } from "node:url";
 import { getManifestSrc, getOutDir } from "./viteEnv";
 
-const browser = process.env.BROWSER === "firefox" ? "firefox" : "chrome";
-
 export default defineConfig({
   plugins: [
     react(),

@@ -20,7 +20,7 @@ You can also check the [project board](https://github.com/FULU-Foundation/CRW-Ex
 
 ## Clone and build the extension:
 
-### Chrome & Firefox
+### Chrome, Firefox & Safari
 
 ```shell
 git clone https://github.com/FULU-Foundation/CRW-Extension.git
@@ -30,6 +30,7 @@ npm run build:watch
 ```
 
 The compiled extension will be output in the `dist` folder and vite will watch for changes and update the extension automatically.
+This now builds `dist/chrome`, `dist/firefox`, and `dist/safari`.
 
 ## Development Installation
 
@@ -46,6 +47,14 @@ The compiled extension will be output in the `dist` folder and vite will watch f
 2. Expand 'Temporary Extensions'
 3. Click 'Load Temporary Add-on...'
 4. Navigate to the unzipped folder and open `manifest.json`
+
+### For Safari:
+
+Safari Web Extensions require an Xcode wrapper app. After building `dist/safari`, convert it with Apple's tool:
+
+```shell
+npm run safari:convert
+```
 
 ## Formatting
 
